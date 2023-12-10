@@ -1,7 +1,8 @@
 import unittest
 from password_validator.validator import PasswordValidator
 from password_validator.validator import (
-    LengthRule, UppercaseRule, LowercaseRule, NumberRule, UnderscoreRule
+    LengthRule, UppercaseRule, LowercaseRule, 
+    NumberRule, UnderscoreRule, NoSpaceRule
 )
 
 class TestPasswordValidator(unittest.TestCase):
@@ -9,7 +10,7 @@ class TestPasswordValidator(unittest.TestCase):
     def test_valid_password(self):
         rules = [
             LengthRule(), UppercaseRule(), LowercaseRule(), 
-            NumberRule(), UnderscoreRule()
+            NumberRule(), UnderscoreRule(), NoSpaceRule(),
         ]
         validator = PasswordValidator(rules)
 
@@ -49,4 +50,11 @@ class TestPasswordValidator(unittest.TestCase):
         validator = PasswordValidator(rules)
 
         invalid_password = "N0underSc0re"
+        self.assertFalse(validator.validate_password(invalid_password))
+
+    def test_invalid_password_contains_space(self):
+        rules = [NoSpaceRule()]
+        validator = PasswordValidator(rules)
+
+        invalid_password = "h4s   Space"
         self.assertFalse(validator.validate_password(invalid_password))

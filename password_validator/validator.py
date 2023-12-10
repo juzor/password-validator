@@ -24,6 +24,10 @@ class NumberRule(ValidationRule):
 class UnderscoreRule(ValidationRule):
     def validate(self, password):
         return '_' in password
+    
+class NoSpaceRule(ValidationRule):
+    def validate(self, password):
+        return ' ' not in password
 
 class PasswordValidator:
 

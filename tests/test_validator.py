@@ -1,16 +1,24 @@
 import unittest
 from password_validator.validator import PasswordValidator
 from password_validator.validator import (
-    LengthRule, UppercaseRule, LowercaseRule, 
-    NumberRule, SpecialCharacterRule, NoSpaceRule
+    LengthRule,
+    UppercaseRule,
+    LowercaseRule,
+    NumberRule,
+    SpecialCharacterRule,
+    NoSpaceRule,
 )
 
+
 class TestPasswordValidator(unittest.TestCase):
-    
     def test_valid_password(self):
         rules = [
-            LengthRule(length=8), UppercaseRule(), LowercaseRule(), 
-            NumberRule(), SpecialCharacterRule(), NoSpaceRule(),
+            LengthRule(length=8),
+            UppercaseRule(),
+            LowercaseRule(),
+            NumberRule(),
+            SpecialCharacterRule(),
+            NoSpaceRule(),
         ]
         validator = PasswordValidator(rules)
 

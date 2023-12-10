@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class ValidationRule(ABC):
     """
     Base class for password validation rules.
@@ -7,6 +8,7 @@ class ValidationRule(ABC):
     Methods:
         validate(password: str) -> bool: Validates a password based on a specific rule.
     """
+
     @abstractmethod
     def validate(self, password):
         """
@@ -18,16 +20,18 @@ class ValidationRule(ABC):
         Returns:
             bool: True if the password passes the validation, otherwise False.
         """
-        pass
+        pass  # pylint: disable=unnecessary-pass
+
 
 class LengthRule(ValidationRule):
     """
     Validation rule for password length.
 
     Methods:
-        validate(self, password: str) -> bool: 
+        validate(self, password: str) -> bool:
             Validates that the password meets the length requirement.
     """
+
     def __init__(self, length: int) -> None:
         self.length = length
 
@@ -42,7 +46,8 @@ class LengthRule(ValidationRule):
             bool: True if the password meets the length requirement, False otherwise.
         """
         return len(password) >= self.length
-    
+
+
 class UppercaseRule(ValidationRule):
     """
     Validation rule for at least one capital letter (i.e. uppercase).
@@ -51,6 +56,7 @@ class UppercaseRule(ValidationRule):
         validate(self, password: str) -> bool:
             Validates that the password contains at least one capital letter (i.e. uppercase).
     """
+
     def validate(self, password):
         """
         Validates that the password contains at least one capital letter (i.e. uppercase).
@@ -62,7 +68,8 @@ class UppercaseRule(ValidationRule):
             bool: True if the password contains at least one capital letter, False otherwise.
         """
         return any(char.isupper() for char in password)
-    
+
+
 class LowercaseRule(ValidationRule):
     """
     Validation rule for at least one small letter (i.e. lowercase).
@@ -71,6 +78,7 @@ class LowercaseRule(ValidationRule):
         validate(self, password: str) -> bool:
             Validates that the password contains at least one small letter (i.e. lowercase).
     """
+
     def validate(self, password):
         """
         Validates that the password contains at least one small letter (i.e. lowercase).
@@ -82,7 +90,8 @@ class LowercaseRule(ValidationRule):
             bool: True if the password contains at least one small letter, False otherwise.
         """
         return any(char.islower() for char in password)
-    
+
+
 class NumberRule(ValidationRule):
     """
     Validation rule for at least one number.
@@ -91,6 +100,7 @@ class NumberRule(ValidationRule):
         validate(self, password: str) -> bool:
             Validates that the password contains at least one number.
     """
+
     def validate(self, password):
         """
         Validates that the password contains at least one number.
@@ -102,7 +112,8 @@ class NumberRule(ValidationRule):
             bool: True if the password contains at least one number, False otherwise.
         """
         return any(char.isdigit() for char in password)
-    
+
+
 class SpecialCharacterRule(ValidationRule):
     """
     Validation rule for the presence of at least one symbol (including underscore).
@@ -111,6 +122,7 @@ class SpecialCharacterRule(ValidationRule):
         validate(self, password: str) -> bool
             Validates that the password contains at least one symbol.
     """
+
     def validate(self, password):
         """
         Validates that the password contains at least one symbol.
@@ -123,12 +135,14 @@ class SpecialCharacterRule(ValidationRule):
         """
         symbols = set("!@#$%^&*()-_+=<>?/,.:;[]{}|~")
         return any(char in symbols for char in password)
-    
+
+
 class NoSpaceRule(ValidationRule):
     """
-    Validation rule that checks if a password contains spaces. 
+    Validation rule that checks if a password contains spaces.
     If the password contains spaces, it is not valid.
     """
+
     def validate(self, password):
         """
         Validates whether the provided password contains spaces.
@@ -139,7 +153,8 @@ class NoSpaceRule(ValidationRule):
         Returns:
             bool: Whether the password contains spaces or not.
         """
-        return ' ' not in password
+        return " " not in password
+
 
 class PasswordValidator:
     """
@@ -178,6 +193,5 @@ class PasswordValidator:
         for rule in self.rules:
             if not rule.validate(password):
                 return False
-        
+
         return True
-            

@@ -1,7 +1,7 @@
 import unittest
 from password_validator.validator import PasswordValidator
 from password_validator.validator import (
-    LengthRule,
+    LengthRule, UppercaseRule, LowercaseRule, NumberRule, UnderscoreRule
 )
 
 class TestPasswordValidator(unittest.TestCase):
@@ -20,25 +20,29 @@ class TestPasswordValidator(unittest.TestCase):
         self.assertFalse(validator.validate_password(invalid_password))
 
     def test_invalid_password_no_uppercase(self):
-        validator = PasswordValidator()
+        rules = [UppercaseRule()]
+        validator = PasswordValidator(rules)
 
         invalid_password = "n0_uppercase"
         self.assertFalse(validator.validate_password(invalid_password))
 
     def test_invalid_password_no_lowercase(self):
-        validator = PasswordValidator()
+        rules = [LowercaseRule()]
+        validator = PasswordValidator(rules)
 
         invalid_password = "N0_L0WERCASE"
         self.assertFalse(validator.validate_password(invalid_password))
 
     def test_invalid_password_no_number(self):
-        validator = PasswordValidator()
+        rules = [NumberRule()]
+        validator = PasswordValidator(rules)
 
         invalid_password = "No_Number"
         self.assertFalse(validator.validate_password(invalid_password))
 
     def test_invalid_password_no_underscore(self):
-        validator = PasswordValidator()
+        rules = [UnderscoreRule()]
+        validator = PasswordValidator(rules)
 
         invalid_password = "N0underSc0re"
         self.assertFalse(validator.validate_password(invalid_password))

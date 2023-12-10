@@ -9,7 +9,7 @@ class TestPasswordValidator(unittest.TestCase):
     
     def test_valid_password(self):
         rules = [
-            LengthRule(), UppercaseRule(), LowercaseRule(), 
+            LengthRule(length=8), UppercaseRule(), LowercaseRule(), 
             NumberRule(), SpecialCharacterRule(), NoSpaceRule(),
         ]
         validator = PasswordValidator(rules)
@@ -18,7 +18,7 @@ class TestPasswordValidator(unittest.TestCase):
         self.assertTrue(validator.validate_password(valid_password))
 
     def test_invalid_password_length(self):
-        rules = [LengthRule()]
+        rules = [LengthRule(length=8)]
         validator = PasswordValidator(rules)
 
         invalid_password = "Asc11"

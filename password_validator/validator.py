@@ -28,6 +28,9 @@ class LengthRule(ValidationRule):
         validate(self, password: str) -> bool: 
             Validates that the password meets the length requirement.
     """
+    def __init__(self, length: int) -> None:
+        self.length = length
+
     def validate(self, password):
         """
         Validates that the password meets the length requirement.
@@ -38,7 +41,7 @@ class LengthRule(ValidationRule):
         Returns:
             bool: True if the password meets the length requirement, False otherwise.
         """
-        return len(password) > 8
+        return len(password) >= self.length
     
 class UppercaseRule(ValidationRule):
     """

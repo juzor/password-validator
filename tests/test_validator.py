@@ -1,5 +1,8 @@
 import unittest
 from password_validator.validator import PasswordValidator
+from password_validator.validator import (
+    LengthRule,
+)
 
 class TestPasswordValidator(unittest.TestCase):
     
@@ -10,7 +13,8 @@ class TestPasswordValidator(unittest.TestCase):
         self.assertTrue(validator.validate_password(valid_password))
 
     def test_invalid_password_length(self):
-        validator = PasswordValidator()
+        rules = [LengthRule()]
+        validator = PasswordValidator(rules)
 
         invalid_password = "Asc11"
         self.assertFalse(validator.validate_password(invalid_password))

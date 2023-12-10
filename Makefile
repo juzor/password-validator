@@ -9,7 +9,7 @@ lint:
 	pylint --disable=R,C **/*.py
 test:
 	# run all tests
-	py -m tests
+	python -m tests
 coverage:
 	# run coverage
 	coverage run -m unittest discover -s tests

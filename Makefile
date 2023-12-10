@@ -1,6 +1,6 @@
 install:
 	# install dependencies using pip and upgrade pip
-	python -m pip install --upgrade pip and python -m pip install -r requirements-dev.txt
+	pip install --upgrade pip && pip install -r requirements-dev.txt
 format:
 	# format code
 	black **/*.py

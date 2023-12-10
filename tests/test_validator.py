@@ -7,7 +7,11 @@ from password_validator.validator import (
 class TestPasswordValidator(unittest.TestCase):
     
     def test_valid_password(self):
-        validator = PasswordValidator()
+        rules = [
+            LengthRule(), UppercaseRule(), LowercaseRule(), 
+            NumberRule(), UnderscoreRule()
+        ]
+        validator = PasswordValidator(rules)
 
         valid_password = "V4lid_pass0rd"
         self.assertTrue(validator.validate_password(valid_password))

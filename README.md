@@ -1,3 +1,5 @@
+[![Lint code](https://github.com/juzor/password-validator/actions/workflows/lint.yml/badge.svg)](https://github.com/juzor/password-validator/actions/workflows/lint.yml) [![Run tests](https://github.com/juzor/password-validator/actions/workflows/test.yml/badge.svg)](https://github.com/juzor/password-validator/actions/workflows/test.yml)
+
 # Password Validation Library
 
 This Python library provides a flexible and extensible framework for validating passwords based on various rules. It includes predefined validation rules for length, uppercase letters, lowercase letters, numbers, special characters, and more.

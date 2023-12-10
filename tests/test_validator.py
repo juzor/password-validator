@@ -9,6 +9,7 @@ from password_validator.validation_rules import (
     NoSpaceRule,
 )
 
+
 class TestPasswordValidator(unittest.TestCase):
     def test_valid_password(self):
         rules = [

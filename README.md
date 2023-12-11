@@ -29,13 +29,9 @@ validator = PasswordValidator(
 )
 
 # Validate a password
-password_to_check = "SecurePassword123!"
-is_valid = validator.validate_password(password_to_check)
+print(validator.validate_password("ValidPassword123_")) # => True
 
-if is_valid:
-    print("Password is valid!")
-else:
-    print("Password does not meet the validation criteria.")
+print(validator.validate_password("weakpwd")) # => False
 
 ```
 

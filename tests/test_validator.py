@@ -1,6 +1,6 @@
 import unittest
-from password_validator.validator import PasswordValidator
-from password_validator.validation_rules import (
+from password_validator import PasswordValidator
+from password_validator import (
     LengthRule,
     UppercaseRule,
     LowercaseRule,

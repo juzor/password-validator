@@ -6,8 +6,8 @@ This Python library provides a flexible and extensible framework for validating 
 
 ## Usage
 ```python
-from password_validator.validator import PasswordValidator
-from password_validator.validation_rules import (
+from password_validator import PasswordValidator
+from password_validator import (
     PasswordValidator, LengthRule, UppercaseRule, 
     LowercaseRule, NumberRule, SpecialCharacterRule, NoSpaceRule
 )

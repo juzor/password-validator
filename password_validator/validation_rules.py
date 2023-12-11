@@ -22,6 +22,9 @@ class ValidationRule(ABC):
         """
         pass  # pylint: disable=unnecessary-pass
 
+    # @abstractmethod
+    # def errors(self):
+    #     pass # pylint: disable=unnecessary-pass
 
 class LengthRule(ValidationRule):
     """
@@ -46,6 +49,9 @@ class LengthRule(ValidationRule):
             bool: True if the password meets the length requirement, False otherwise.
         """
         return len(password) >= self.length
+    
+    # def errors(self):
+    #     return (f"Password must contains {self.length} characters!")
 
 
 class UppercaseRule(ValidationRule):
